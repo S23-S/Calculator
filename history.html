@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculation History</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #444343;
+    }
+    .history-container {
+      background: #f0f0f0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      margin-bottom: 5px;
+      background: #e0e0e0;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .back-btn {
+      margin-top: 10px;
+      width: 100%;
+      background: #007bff;
+      color: #fff;
+      font-size: 1em;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .back-btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body onload="displayHistory()">
+  <div class="history-container">
+    <h2>History</h2>
+    <ul id="history-list"></ul>
+    <button class="back-btn" onclick="goBack()">Back to Calculator</button>
+  </div>
+  <script>
+    function displayHistory() {
+      const historyList = document.getElementById('history-list');
+      const savedHistory = JSON.parse(localStorage.getItem('history')) || [];
+      historyList.innerHTML = savedHistory.map(item => `<li>${item}</li>`).join('');
+    }
+
+    function goBack() {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
